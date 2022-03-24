@@ -37,6 +37,8 @@
 
 #include "diameap_mysql.h"
 
+MYSQL *db_conn;
+
 static pthread_mutex_t db_cs_mutex =
 PTHREAD_MUTEX_INITIALIZER;
 

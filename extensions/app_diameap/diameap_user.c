@@ -38,6 +38,8 @@
 
 #include "libdiameap.h"
 
+boolean check_user_identity;
+
 int diameap_user_get_userid(struct eap_user *user, u8* userid)
 {
 	TRACE_ENTRY("%p %p",user,userid);

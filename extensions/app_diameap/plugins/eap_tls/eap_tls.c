@@ -38,6 +38,8 @@
 
 #include "eap_tls.h"
 
+struct tls_config tls_global_conf;
+
 int eap_tls_configure(char * configfile);
 int eap_tls_init(struct eap_state_machine *smd);
 int eap_tls_initPickUp(struct eap_state_machine *smd);

@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Sebastien Decugis <sdecugis@freediameter.net>
 Build-Depends: debhelper ( >= 7.3.9),
  cmake, make, gcc, g++, bison, flex,
- libsctp-dev, libgnutls-dev | gnutls-dev, libidn11-dev,
+ libsctp-dev, libgnutls28-dev | gnutls-dev, libidn11-dev,
  libpq-dev, libmysqlclient-dev, libxml2-dev, swig, python-dev
 Standards-Version: 3.8.3
 Homepage: http://www.freediameter.net
@@ -30,7 +30,7 @@ Description: The freeDiameter libraries.
 Package: freediameter-dev
 Architecture: any
 Section: contrib/devel
-Depends: freediameter-common (= ${binary:Version}), libsctp-dev, libgnutls-dev, libgcrypt-dev
+Depends: freediameter-common (= ${binary:Version}), libsctp-dev, libgnutls28-dev, libgcrypt-dev
 Description: This package provides the development files for freeDiameter.
 
 Package: freediameter-daemon
@@ -48,7 +48,7 @@ Package: freediameter-debug-tools
 Architecture: any
 Section: contrib/debug
 Depends: ${misc:Depends}, freediameter-common (= ${binary:Version})
-Suggests: python, libmysqlclient16
+Suggests: python, libmysqlclient20 | libmysqlclient21
 Description: freeDiameter debug tools.
  This package provides useful tools to help tracking 
  problems in freeDiameter installation. For example,
@@ -197,7 +197,7 @@ Description: freeDiameter simple Accounting server.
 
 Package: freediameter-eap-server
 Architecture: any
-Depends: ${misc:Depends}, freediameter-daemon (= ${binary:Version}), libmysqlclient16, freediameter-dictionary-rfc4072 (= ${binary:Version})
+Depends: ${misc:Depends}, freediameter-daemon (= ${binary:Version}), libmysqlclient20 | libmysqlclient21, freediameter-dictionary-rfc4072 (= ${binary:Version})
 Description: freeDiameter Diameter EAP server implementation.
  This freeDiameter extension implements a Diameter EAP server. 
  It supports EAP-MD5 and EAP-TLS methods currently.
@@ -212,7 +212,7 @@ Description: freeDiameter Diameter EAP server implementation.
 
 Package: freediameter-sip-server
 Architecture: any
-Depends: ${misc:Depends}, freediameter-daemon (= ${binary:Version}), libmysqlclient16, freediameter-dictionary-rfc4740 (= ${binary:Version})
+Depends: ${misc:Depends}, freediameter-daemon (= ${binary:Version}), libmysqlclient20 | libmysqlclient21, freediameter-dictionary-rfc4740 (= ${binary:Version})
 Description: freeDiameter Diameter SIP server implementation.
  This freeDiameter extension implements a prototype 
  Diameter SIP server.
