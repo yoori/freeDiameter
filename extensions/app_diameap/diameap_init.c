@@ -112,7 +112,9 @@ struct dict_object * dataobj_state = NULL;
 struct dict_object * dataobj_tunneling = NULL;
 struct dict_object * dataobj_user_name = NULL;
 
-
+#if LIBMYSQL_VERSION_ID >= 80000
+typedef bool my_bool;
+#endif
 
 static int diameap_init_config(char * conffile)
 {

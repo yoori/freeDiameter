@@ -20,11 +20,12 @@ FIND_PATH(MySQL_INCLUDE_DIR
 )
 
 # Library
-#SET(MySQL_NAMES mysqlclient mysqlclient_r)
-SET(MySQL_NAMES mysqlclient_r)
+SET(MySQL_NAMES mysqlclient mysqlclient_r)
+#SET(MySQL_NAMES mysqlclient_r)
+
 FIND_LIBRARY(MySQL_LIBRARY
   NAMES ${MySQL_NAMES}
-  PATHS /usr/lib /usr/local/lib
+  PATHS /usr/lib /usr/local/lib /usr/lib/x86_64-linux-gnu/
   PATH_SUFFIXES mysql
 )
 

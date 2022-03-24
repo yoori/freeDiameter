@@ -41,22 +41,27 @@ SET(INSTALL_EXTENSIONS_SUFFIX 	${LIB_INSTALL_DIR}/freeDiameter	CACHE PATH "Direc
 # All source code should be POSIX 200112L compatible, but some other extensions might be used, so:
 ADD_DEFINITIONS(-D_GNU_SOURCE)
 
+SET(CMAKE_C_FLAGS "-DFD_PROJECT_VENDOR_ID=1 -DOLD_SCTP_SOCKET_API=1 ${CMAKE_C_FLAGS}")
+SET(CMAKE_CXX_FLAGS "-DFD_PROJECT_VENDOR_ID=1 -DOLD_SCTP_SOCKET_API=1 ${CMAKE_CXX_FLAGS}")
+
 # Add a "Profiling" build type
 # SET(CMAKE_BUILD_TYPE Profiling)
-SET(CMAKE_C_FLAGS_PROFILING "-fprofile-arcs -ftest-coverage -fstack-protector -g -Wall")
+SET(CMAKE_C_FLAGS_COMMON "")
+
+SET(CMAKE_C_FLAGS_PROFILING "-fprofile-arcs -ftest-coverage -fstack-protector -g -Wall ${CMAKE_C_FLAGS_COMMON}")
 
 # Add a "MaxPerformance" build type -- this is very silent...
 # SET(CMAKE_BUILD_TYPE MaxPerformance)
-SET(CMAKE_C_FLAGS_MAXPERFORMANCE "${CMAKE_C_FLAGS_RELEASE} -DSTRIP_DEBUG_CODE")
+SET(CMAKE_C_FLAGS_MAXPERFORMANCE "${CMAKE_C_FLAGS_RELEASE} -DSTRIP_DEBUG_CODE ${CMAKE_C_FLAGS_COMMON}")
 
 # Add a "DebianPackage" build type used when creating the Debian packages
-SET(CMAKE_C_FLAGS_DEBIANPACKAGE "${CMAKE_C_FLAGS_RELWITHDEBINFO}")
+SET(CMAKE_C_FLAGS_DEBIANPACKAGE "${CMAKE_C_FLAGS_RELWITHDEBINFO} ${CMAKE_C_FLAGS_COMMON}")
 
 # Set the "Debug" flags
-SET(CMAKE_C_FLAGS_DEBUG "-Wall -g -O0")
+SET(CMAKE_C_FLAGS_DEBUG "-Wall -g -O0 ${CMAKE_C_FLAGS_COMMON}")
 
 # Add a "DebugValgrind" build type used for checking execution with Valgrind tool
-SET(CMAKE_C_FLAGS_DEBUGVALGRIND "-Wall -g -O0")
+SET(CMAKE_C_FLAGS_DEBUGVALGRIND "-Wall -g -O0 ${CMAKE_C_FLAGS_COMMON}")
 
 # Set the DEBUG flag for Debug and Profiling builds
 IF (CMAKE_BUILD_TYPE MATCHES "Debug|Profiling|DebugValgrind")
