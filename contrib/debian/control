@@ -226,3 +226,8 @@ Description: freeDiameter Diameter SIP server implementation.
  This extension requires a configuration file.
  See app_sip.conf.sample for more details.
 
+Package: freediameter-dictionary-rfc4006-extension-3gpp
+Architecture: any
+Depends: ${misc:Depends}, freediameter-common (= ${binary:Version})
+Description: RFC4005 extension.
+
